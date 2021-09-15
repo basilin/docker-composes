@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+  redis:
+    image: redis:6.2.5
+    ports:
+      - '6379:6379'
+    volumes:
+      - 'redis_data:/data'
+  redisinsight:
+    image: redislabs/redisinsight:latest
+    ports:
+      - '8001:8001'
+    volumes:
+      - 'redisinsight:/db'
+
+volumes:
+  redis_data:
+    driver: local
+  redisinsight:
+    driver: local
